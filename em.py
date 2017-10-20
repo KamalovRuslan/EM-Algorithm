@@ -113,7 +113,6 @@ def run_EM_with_restarts(X, h, w, tolerance=0.001, max_iter=50, useMAP=False,\
                         restart=10):
 
     best_params, best_L = run_EM(X, h, w)
-    best_L = best_L[-1]
     for trying in range(restart - 1):
         params, LL = run_EM(X, h, w)
         if best_L < LL:
