@@ -1,9 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import em
 import numpy as np
 import random
 
-
-data = np.random.rand(20, 30, 5)
-F = np.random.rand(10, 10)
-B =np.random.rand(20, 30)
-print(np.ones_like(B) - B.max())
+data = np.load('data1000_2016.npy')
+data = data[:, :, :5]
+for i in range(5):
+    data[:, :, i] /= 255.
+params, LL = em.run_EM(data, h=100, w=78)
+print(params[0])
